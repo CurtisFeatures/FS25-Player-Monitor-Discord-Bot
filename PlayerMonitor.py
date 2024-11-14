@@ -1,3 +1,15 @@
+"""
+Script Name: PlayerMonitor.py
+
+Description:
+    This Discord bot monitors player activity on a Farming Simulator 25 server by periodically checking an XML feed for player status. The bot posts updates to a specified Discord channel when players join or leave, including the in-game time, session duration, and total number of players online.
+
+Author: Jamie Curtis
+Date Created: 13/11/2024
+Last Updated: 13/11/2024
+GitHub Repository: https://github.com/CurtisFeatures/FS25-Player-Monitor-Discord-Bot
+"""
+
 import discord
 import requests
 import xml.etree.ElementTree as ET
