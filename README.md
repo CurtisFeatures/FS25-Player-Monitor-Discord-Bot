@@ -55,13 +55,9 @@ Once the bot is running, it will:
 
 The bot will post messages in this format:
 
-Jamie has joined the Server.<br>
-Current In-game time is: 21:45<br>
-The total number of players online now is 2
+<img src="Images/User_Login.png" alt="User Login Image" width="50%">
 
-Jamie has left the Server after being connected for 1 hour and 15 minutes.<br>
-Current in-game time is 23:00<br>
-The total number of players online now is 1
+<img src="Images/User_Logout.png" alt="User Logoff Image" width="50%">
 
 
 
