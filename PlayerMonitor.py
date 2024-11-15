@@ -1,15 +1,3 @@
-"""
-Script Name: PlayerMonitor.py
-
-Description:
-    This Discord bot monitors player activity on a Farming Simulator 25 server by periodically checking an XML feed for player status. The bot posts updates to a specified Discord channel when players join or leave, including the in-game time, session duration, and total number of players online.
-
-Author: Jamie Curtis
-Date Created: 13/11/2024
-Last Updated: 13/11/2024
-GitHub Repository: https://github.com/CurtisFeatures/FS25-Player-Monitor-Discord-Bot
-"""
-
 import discord
 import requests
 import xml.etree.ElementTree as ET
@@ -84,8 +72,8 @@ async def fetch_and_check_players():
                         "uptime_start": uptime_minutes
                     }
                     await channel.send(
-                        f"{player_name} has joined the Server. \n"
-                        f"Current In-game time is {in_game_time} \n"
+                        f"{player_name} has joined the Server.\n"
+                        f"Current In-game time is {in_game_time}\n"
                         f"The total number of players online now is {len(current_players)}"
                     )
 
@@ -93,13 +81,14 @@ async def fetch_and_check_players():
             for player_name, info in list(player_states.items()):
                 if info["is_online"] and player_name not in current_players:
                     # Calculate connection duration
-                    uptime_minutes = info.get("uptime_start", 0)
-                    connection_duration = timedelta(minutes=uptime_minutes)
-                    hours, minutes = divmod(connection_duration.seconds // 60, 60)
+                    joined_at = datetime.fromisoformat(info["joined_at"])
+                    connection_duration = datetime.now() - joined_at
+                    hours, remainder = divmod(connection_duration.total_seconds(), 3600)
+                    minutes = remainder // 60
 
                     await channel.send(
-                        f"{player_name} has left the server after being connected for {hours} hours and {minutes} minutes. \n"
-                        f"Current In-game time is {in_game_time} \n"
+                        f"{player_name} has left the server after being connected for {int(hours)} hours and {int(minutes)} minutes.\n"
+                        f"Current In-game time is {in_game_time}\n"
                         f"The total number of players online now is {len(current_players)}"
                     )
 
