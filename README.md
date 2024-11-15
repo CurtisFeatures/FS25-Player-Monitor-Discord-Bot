@@ -25,14 +25,10 @@ Installation
 
 1.  **Clone the repository**:
 
-    bash
-
     `git clone https://github.com/CurtisFeatures/fs25-player-monitor-discord-bot.git
     cd fs25-player-monitor-discord-bot`
 
 2.  **Install dependencies**:
-
-    bash
 
     `pip install discord.py requests`
 
@@ -41,9 +37,6 @@ Installation
     -   Replace `YOUR_DISCORD_BOT_TOKEN` and `YOUR_CHANNEL_ID` in the code with your Discord bot token and channel ID.
       
 4.  **Run the bot**:
-
-    bash
-
 
     `python PlayerMonitor.py`
 
